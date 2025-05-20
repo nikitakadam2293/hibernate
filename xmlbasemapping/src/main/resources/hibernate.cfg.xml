@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE hibernate-configuration SYSTEM "classpath:/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+    <session-factory>
+
+        <!-- DB Config -->
+
+        <property name="connection.driver_class"> org.postgresql.Driver</property>
+        <property name="connection.url">jdbc:postgresql://localhost:5432/xmlbasemapping</property>
+        <property name="connection.username">postgres</property>
+        <property name="connection.password">sunita</property>
+        <property name="dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+        <property name="hbm2ddl.auto">update</property>
+        <property name="show_sql">true</property>
+
+        <!-- mapping -->
+
+        <property name="hibernate.transform_hbm_xml.enabled">true</property>
+
+        <mapping resource="Cart.hbm.xml"/>
+        <mapping resource="Users.hbm.xml"/>
+        <mapping resource="Orders.hbm.xml"/>
+        <mapping resource="ShippingInformation.hbm.xml"/>
+
+       <!-- <mapping resource="Project.hbm.xml"/>
+        <mapping resource="Employee.hbm.xml"/>
+-->
+       <!-- <mapping class="org.example.onetoonemapping.Users"/>
+
+
+        <mapping class="org.example.onetoonemapping.Orders"/>
+        <mapping class="org.example.onetoonemapping.ShippingInformation"/>-->
+
+
+    </session-factory>
+</hibernate-configuration>

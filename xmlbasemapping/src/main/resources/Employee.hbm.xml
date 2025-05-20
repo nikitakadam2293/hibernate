@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="org.example.onetomany.Employee" table="employee">
+        <id name="id" column="id" type="long">
+        <generator class="sequence">
+            <param name="sequence_name">employee_seq</param>
+        </generator>
+        </id>
+
+        <property name="name" column="name" type="string"/>
+        <property name="email" column="email" type="string"/>
+        <property name="city" column="city" type="string"/>
+        <property name="state" column="state" type="string"/>
+        <property name="companyName" column="companyName" type="string"/>
+
+        <bag name="project" cascade="all" inverse="true">
+            <key column="employee_id"/>   <!-- foreign key in Project table -->
+            <one-to-many class="org.example.onetomany.Project"/>
+        </bag>
+
+        <many-to-one name="department" class="org.example.onetomany.Department" column="department_id" not-null="true"/>
+
+
+    </class>
+</hibernate-mapping>

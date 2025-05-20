@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="org.example.manytomany.Employee" table="employee">
+        <id name="id" column="id">
+            <generator class="sequence">
+                <param name="sequence_name">employee_seq</param>
+            </generator>
+        </id>
+
+        <property name="name" column="name"/>
+        <property name="lastName" column="lastName"/>
+        <property name="mobile" column="mobile"/>
+        <property name="address" column="address"/>
+
+
+        <bag name="department" table="department_employee" cascade="all">
+            <key column="employee_id"></key>
+            <many-to-many class="org.example.manytomany.Department" column="department_id"/>
+        </bag>
+
+
+    </class>
+</hibernate-mapping>

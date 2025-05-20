@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="org.example.manytomany.OrdersMany" table="orders">
+        <id name="id" column="id">
+            <generator class="sequence">
+            <param name="sequence_name">orders_seq</param>
+            </generator>
+
+        </id>
+
+        <property name="status" column="status" type="string"/>
+        <property name="startDate" column="startDate" type="LocalDateTime"/>
+        <property name="shippingDate" column="shippingDate" type="LocalDateTime"/>
+
+        <bag name="users" table="user_order" inverse="true">
+            <key column="order_id"/>
+             <many-to-many class="org.example.manytomany.UsersMany" column="user_id"/>
+        </bag>
+
+    </class>
+</hibernate-mapping>
+
+<!---->
+
+<!--
+<hibernate-mapping>
+    <class name="org.example.manytomany.OrdersMany" table="orders">
+        <id name="id" column="id">
+            <generator class="sequence">
+                <param name="sequence_name">orders_seq</param>
+            </generator>
+        </id>
+
+        <property name="status" column="status"/>
+        <property name="startDate" column="start_date"/>
+        <property name="shippingDate" column="shipping_date"/>
+
+        <bag name="users" table="user_order" inverse="true">
+            <key column="order_id"/>
+            <many-to-many class="org.example.manytomany.UsersMany" column="user_id"/>
+        </bag>
+    </class>
+</hibernate-mapping>-->

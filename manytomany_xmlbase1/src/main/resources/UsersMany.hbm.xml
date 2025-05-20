@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="org.example.manytomany.UsersMany" table="users">
+        <id name="id" column="id">
+            <generator class="sequence">
+            <param name="sequence_name">users_seq</param>
+            </generator>
+        </id>
+
+        <property name="name" column="name" type="string"/>
+        <property name="email" column="email" type="string"/>
+        <property name="street" column="street" type="string"/>
+        <property name="city" column="city" type="string"/>
+        <property name="district" column="district" type="string" />
+
+        <bag name="orders" table="user_order" cascade="all">
+            <key column="user_id"></key>
+            <many-to-many  class="org.example.manytomany.OrdersMany" column="order_id" />
+        </bag>
+
+    </class>
+</hibernate-mapping>
+
+
+<!---->
+<!--
+
+<hibernate-mapping>
+    <class name="org.example.manytomany.UsersMany" table="users">
+        <id name="id" column="id">
+            <generator class="sequence">
+                <param name="sequence_name">users_seq</param>
+            </generator>
+        </id>
+
+        <property name="name" column="name"/>
+        <property name="email" column="email"/>
+        <property name="street" column="street"/>
+        <property name="city" column="city"/>
+        <property name="district" column="district"/>
+
+        <bag name="orders" table="user_order" cascade="all">
+            <key column="user_id"/>
+            <many-to-many class="org.example.manytomany.OrdersMany" column="order_id"/>
+        </bag>
+    </class>
+</hibernate-mapping>
+-->

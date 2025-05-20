@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE hibernate-configuration SYSTEM "classpath:/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+    <session-factory>
+
+        <!-- DB Config -->
+
+        <property name="connection.driver_class"> org.postgresql.Driver</property>
+        <property name="connection.url">jdbc:postgresql://localhost:5432/anotaionbasemapping</property>
+        <property name="connection.username">postgres</property>
+        <property name="connection.password">sunita</property>
+        <property name="dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+        <property name="hbm2ddl.auto">update</property>
+        <property name="show_sql">true</property>
+
+        <!-- mapping -->
+
+        <mapping class="org.example.onetoonemapping.Cart"/>
+      <!--  <mapping class="org.example.onetoonemapping.Category"/>
+        <mapping class="org.example.onetoonemapping.Order"/>
+        <mapping class="org.example.onetoonemapping.OrderItem"/>
+        <mapping class="org.example.onetoonemapping.Product"/>-->
+        <mapping class="org.example.onetoonemapping.Users"/>
+        <mapping class="org.example.onetoonemapping.Orders"/>
+        <mapping class="org.example.onetoonemapping.ShippingInformation"/>
+
+        <!--ONE TO MANY-->
+        <mapping class="org.example.onetomany.Users"/>
+        <mapping class="org.example.onetomany.Orders"/>
+
+
+    </session-factory>
+</hibernate-configuration>
