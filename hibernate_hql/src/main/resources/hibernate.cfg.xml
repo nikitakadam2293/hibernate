@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE hibernate-configuration SYSTEM "classpath:/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+    <session-factory>
+
+        <!-- DB Config -->
+
+        <property name="connection.driver_class"> org.postgresql.Driver</property>
+        <property name="connection.url">jdbc:postgresql://localhost:5432/hibernate_hql</property>
+        <property name="connection.username">postgres</property>
+        <property name="connection.password">sunita</property>
+        <property name="dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+        <property name="hbm2ddl.auto">update</property>
+        <property name="show_sql">true</property>
+
+        <!-- VALIDATION -->
+
+        <property name="hibernate.validator.apply_to_ddl">true</property>
+        <property name="hibernate.validator.autoregister_listeners">true</property>
+
+
+
+
+
+        <!--  <property name="cache.use_second_level_cache">true</property>
+          <property name="cache.region.factory_class">org.hibernate.cache.jcache.JCacheRegionFactory
+          </property>
+
+          <property name="hibernate.javax.cache.provider">
+              org.ehcache.jsr107.EhcacheCachingProvider
+          </property>-->
+        <!-- mapping -->
+
+
+        <mapping class="org.example.entity.Student"/>
+        <mapping class="org.example.entity.Users"/>
+        <mapping class="org.example.entity.Address"/>
+        <mapping class="org.example.validation.Employee"/>
+
+
+
+    </session-factory>
+</hibernate-configuration>
